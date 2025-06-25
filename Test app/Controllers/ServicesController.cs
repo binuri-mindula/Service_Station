@@ -6,6 +6,8 @@ namespace Test_app.Controllers
 {
     public class ServicesController : Controller
     {
+        [ViewData]
+        public string PageTitle { get; set; }    //View data attribute
         public IActionResult Index()
         {
             return View();
@@ -13,14 +15,22 @@ namespace Test_app.Controllers
 
         public IActionResult Details()
         {
-            var service = new VehicalService();
-            service.Id = 1;
-            service.Title = "Oil change";
-            service.Description = "Change the oil in your vehicle";
-            service.Cost = 32.23m;
-            service.IsDeleted = false;
+            PageTitle = "Service Details";
 
-            return View(service);
+            var service = new VehicalService
+            {
+                Id = 1,
+                Title = "Oil change",
+                Description = "Change the oil in your car",
+                Cost = 23.21m
+            };
+
+            //ViewData["Service"] = service;    //View data dictionary
+            ViewBag.Service = service;
+
+            return View();
         }
+
+
     }
 }

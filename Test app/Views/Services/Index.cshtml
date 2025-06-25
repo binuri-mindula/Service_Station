@@ -1,5 +1,6 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using Microsoft.Extensions.Configuration;
+@inject IConfiguration Configuration;
+
+
+<h1>@Configuration["Page:Header:Title"]</h1>
+<h1>@Configuration["Page:Header:Subtitle"]</h1>
